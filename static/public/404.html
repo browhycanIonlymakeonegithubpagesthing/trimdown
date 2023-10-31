@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background: linear-gradient(45deg, #FF5733 25%, transparent 25%), linear-gradient(-45deg, #FF5733 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #FF5733 75%), linear-gradient(-45deg, transparent 75%, #FF5733 75%);
+      background-size: 20px 20px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      text-align: center;
+      background-color: #fff; 
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      padding: 30px;
+      max-width: 400px;
+    }
+    h1 {
+      color: #FF5733;
+      font-size: 2em;
+    }
+    p {
+      color: #555;
+      font-size: 1.2em;
+    }
+    a {
+      text-decoration: none;
+      background-color: #FF5733;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    a:hover {
+      background-color: #FF3717;
+    }
+    .math-content {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>404 - Page Not Found</h1>
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <p class="math-content" id="quote">Loading a random math quote...</p>
+    <script>
+      var mathQuotes = [
+        "In mathematics, you don't understand things. You just get used to them. - John von Neumann",
+        "Mathematics is the music of reason. - James Joseph Sylvester",
+        "Mathematics is the art of giving the same name to different things. - Henri Poincaré",
+      ];
+
+      var randomIndex = Math.floor(Math.random() * mathQuotes.length);
+      document.getElementById("quote").textContent = mathQuotes[randomIndex];
+    </script>
+    <a href="/">Go back to the homepage</a>
+  </div>
+</body>
+</html>
