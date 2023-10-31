@@ -45,23 +45,43 @@
       font-size: 1.2em;
       margin-top: 20px;
     }
+     #searchInput {
+
+  text-align: left;
+    border: none;
+    background-color: transparent;
+    color:#777;
+    text-decoration:none
+}
   </style>
 </head>
 <body>
   <div class="container">
     <h1>404 - Page Not Found</h1>
-    <p>Oops! The page you're looking for doesn't exist.</p>
-    <p class="math-content" id="quote">Loading a random math quote...</p>
+          <form class="flex m-auto pl-16 w-[45%]">
+<ins><input id="searchInput" type="text" value="Oops! The page you are looking for does not exist."></ins>
+          </form>    <p class="math-content" id="quote">Loading a random math quote...</p>
     <script>
       var mathQuotes = [
         "In mathematics, you don't understand things. You just get used to them. - John von Neumann",
         "Mathematics is the music of reason. - James Joseph Sylvester",
         "Mathematics is the art of giving the same name to different things. - Henri Poincaré",
+        "Happy Halloween! - Mathonline.click",
       ];
 
       var randomIndex = Math.floor(Math.random() * mathQuotes.length);
       document.getElementById("quote").textContent = mathQuotes[randomIndex];
     </script>
+    <div id="home"></div>
+  <div id="search"></div>
+  <div id="settings"></div>
+    <div id="footer"></div>
+  <div id="password"></div>
+      <script src="./js/uv/uv.bundle.js"></script>
+      <script src="./js/uv/uv.config.js"></script>
+      <script src="./js/register-uv.js"></script>
+      <script src="./js/index.js"></script>
+    <link rel="manifest" href="./assets/manifest.json">
     <a href="/">Go back to the homepage</a>
   </div>
 </body>
