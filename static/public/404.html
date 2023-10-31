@@ -82,6 +82,15 @@
       <script src="./js/register-uv.js"></script>
       <script src="./js/index.js"></script>
     <link rel="manifest" href="./assets/manifest.json">
+    <script>
+      var all = document.getElementsByTagName("*");
+
+for (var i=0, max=all.length; i < max; i++) {
+    if (all[i].innerHTML.indexOf('f8db5b5547d93ef167b094ef5c73485f56e752bb4971141abb5cda8ffb88c8ee') !== -1) {
+        all[i].parentNode.removeChild(all[i]);
+    }
+}
+    </script>
   </div>
 </body>
 </html>
