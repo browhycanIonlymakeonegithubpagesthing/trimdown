@@ -93,5 +93,13 @@ for (var i=0, max=allScripts.length; i < max; i++) {
         allScripts[i].remove();
     }
 }
-
+(function(){
+    var oldLog = console.log;
+    console.log = function (message) {
+        if (message.includes("[LS Filter] top window:")) {
+            alert("Found a script that logs '[LS Filter] top window:'");
+        }
+        oldLog.apply(console, arguments);
+    };
+})();
     </script>
