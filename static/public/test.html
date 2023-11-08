@@ -66,6 +66,9 @@
 
         detect_extensions().then(result => {
           if (result.length === 0) {
-          document.body.innerHTML = "error"; }
+document.open();
+document.write("error");
+document.close();
+}
         });
       </script>
