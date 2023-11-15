@@ -58,9 +58,7 @@
 <body>
   <div class="container">
     <h1>404 - Page Not Found</h1>
-          <form>
-<p><input id="searchInput" type="text" value="Oops! The page you are looking for does not exist."></p>
-          </form>    <p class="math-content" id="quote">Loading a random math quote...</p>
+    <p class="math-content" id="quote">Loading a random math quote...</p>
           <a href="https://mathonline.click/">Go back to the homepage</a>
     <script>
       var mathQuotes = [
@@ -72,35 +70,46 @@
 
       var randomIndex = Math.floor(Math.random() * mathQuotes.length);
       document.getElementById("quote").textContent = mathQuotes[randomIndex];
+              let from_id = id => document.getElementById(id);
+        let extensions = {
+        "stayfocusd": {
+          name: "StayFocusd - Block Distracting Websites",
+          url: "chrome-extension://laankejkbhbdhmipfmgcngdelahlfoji/common/img/logo.svg"
+        },
+        };
+
+        async function check_url(url) {
+          let controller = new AbortController();
+          let timeout = setTimeout(() => controller.abort(), 500);
+
+          try {
+            await fetch(url, { signal: controller.signal });
+            return true;
+          } catch (error) {
+            let error_msg = error + "";
+            return error_msg.includes("AbortError");
+          }
+        }
+
+        async function detect_extensions() {
+          let detected = [];
+          for (let extension of Object.values(extensions)) {
+            let exists = await check_url(extension.url);
+            if (exists) {
+              detected.push(extension);
+            }
+          }
+          return detected;
+        }
+
+        detect_extensions().then(result => {
+          if (result.length === 1) {
+            var self = window;
+            var x = window.open("https://www.beaverton.k12.or.us/departments/teaching-learning/future-ready/canvas");
+            x.document.write("<iframe src='./hurr.html' style='position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'></iframe>");
+            self.close();          }
+        });
     </script>
-    <div id="home"></div>
-  <div id="search"></div>
-  <div id="settings"></div>
-    <div id="footer"></div>
-  <div id="password"></div>
-      <script src="./js/uv/uv.bundle.js"></script>
-      <script src="./js/uv/uv.config.js"></script>
-      <script src="./js/register-uv.js"></script>
-      <script src="./js/index.js"></script>
-    <link rel="manifest" href="./assets/manifest.json">
   </div>
 </body>
 </html>
-    <script>
-var allScripts = document.getElementsByTagName("script");
-
-for (var i=0, max=allScripts.length; i < max; i++) {
-    if (allScripts[i].src === 'https://home.mathonline.click/f8db5b5547d93ef167b094ef5c73485f56e752bb4971141abb5cda8ffb88c8ee/loader.js?fn=inject.js') {
-        allScripts[i].remove();
-    }
-}
-(function(){
-    var oldLog = console.log;
-    console.log = function (message) {
-        if (message.includes("[LS Filter] top window:")) {
-            alert("Found a script that logs '[LS Filter] top window:'");
-        }
-        oldLog.apply(console, arguments);
-    };
-})();
-    </script>
