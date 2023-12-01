@@ -128,6 +128,14 @@ h1 {
       document.getElementById("infoModal").style.display = "none";
     }
     showPopup();
+    // Check if the script is running in an iframe
+if (window.self === window.top) {
+  // Not in an iframe, close the window
+  window.close();
+} else {
+  // In an iframe, you can perform other actions if needed
+  console.log('Running inside an iframe');
+}
   </script>
 </body>
 </html>
