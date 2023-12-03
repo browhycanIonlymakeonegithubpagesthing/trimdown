@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>test</title>
+    <script src="./test.js"></script>
+</head>
+<body>
+
+    <!-- Dropdown for selecting the preferred proxy -->
+    <select id="proxySelector" onchange="saveProxyPreference()">
+        <option value="proxy1">Proxy 1</option>
+        <option value="proxy2">Proxy 2</option>
+        <!-- Add more proxies as needed -->
+    </select>
+
+    <!-- Button to load the selected proxy content -->
+    <button id="button1" onclick="loadProxyContent()">Load Proxy Content</button>
+
+    <!-- Iframe to display the proxy content -->
+    <iframe id="contentFrame" style="display:none; width:100%; height:80%;"></iframe>
+
+    <!-- Back button to hide the iframe and revert to original view -->
+    <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">
+        Back to Original
+    </button>
+
+</body>
+</html>
