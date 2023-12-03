@@ -16,7 +16,7 @@ function loadProxyContent() {
     let proxyContent = '';
     switch (preferredProxy) {
         case 'proxy1':
-            proxyContent = '<!DOCTYPE html>
+            proxyContent = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -151,7 +151,7 @@ h1 {
 </html>';
             break;
         case 'proxy2':
-            proxyContent = '<!DOCTYPE html>
+            proxyContent = `<!DOCTYPE html>
 <html class="h-full min-h-full" lang="en">
   <head>
     <meta charset="UTF-8">
@@ -379,7 +379,7 @@ h1 {
       <script src="./js/register-uv.js"></script>
       <script src="./js/index.js"></script>
   </body>
-</html>';
+</html>`;
             break;
         // Add cases for more proxies as needed
     }
