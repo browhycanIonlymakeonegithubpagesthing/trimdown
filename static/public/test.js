@@ -11,8 +11,7 @@ function loadProxyContent() {
     let proxyContent = '';
     switch (preferredProxy) {
         case 'proxy1':
-            proxyContent = `<!DOCTYPE html>
-<html lang="en">
+            proxyContent = `
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
@@ -146,8 +145,7 @@ h1 {
 </html>';
             break;
         case 'proxy2':
-            proxyContent = `<!DOCTYPE html>
-<html class="h-full min-h-full" lang="en">
+            proxyContent = `
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
