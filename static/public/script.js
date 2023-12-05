@@ -15,7 +15,7 @@ function loadIframeContent() {
     HideButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
-    <iframe src="./hurr.html" width=100% height=1000"> `;
+    <iframe src="./test.html" width=100% height=1000"> `;
 }
 function loadIframer() {
     let website = prompt("Enter the website URL:");
