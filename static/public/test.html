@@ -5,50 +5,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
     <style>
-        body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-        .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-        .modal {
-  display: block; 
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-        .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-        .draggable, .draggable * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 iframe {
     display: block;
     border: none; /* Removes any default border */
@@ -97,26 +53,8 @@ iframe {
 
 <button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
 <button id="button2" onclick="createIframe('./games.html')">Games</button>
-<div id="infoModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-          <h1>Cl0@k3r</h1> <!-- Title added here -->
-  <p> A simple static ultraviolet proxy by insert text here</p>
-  <p> Credit of course to Titanium Network, but also to Whos-Evan for making a not-difficult-to-understand proxy for me to fork!<p>
-  <p>dont bully me..</p>
-      <h2>Changelog</h2>
-      <p>December 4th, Reworked EVERYTHING!! Started work on making a game site!</p>
-      <p>November 27th, finally started work!</p>
-      <h2>Features</h2>
-      <p>- AB cloak</p>
-      <p>- Hidden proxy! You cannot access without the special extension (which you know, ofcourse)</p>
-    </div>
-  </div>
+
 <script>
-    function closePopup() {
-      document.getElementById("infoModal").style.display = "none";
-    }
-    let zIndex = 1000;
 
     function createIframe(src) {
         const iframeContainer = $('<div class="draggable"></div>');
