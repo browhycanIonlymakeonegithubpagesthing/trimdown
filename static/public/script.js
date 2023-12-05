@@ -2,12 +2,16 @@ function HideButtons() {
     document.getElementById('button').style.display='none';
     document.getElementById('button2').style.display='none';
     document.getElementById('button3').style.display='none';
+    document.getElementById('button4').style.display='none';
+    document.getElementById('button5').style.display='none';
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
     document.getElementById('button').style.display='block';
     document.getElementById('button2').style.display='block';
     document.getElementById('button3').style.display='block';
+    document.getElementById('button4').style.display='block';
+    document.getElementById('button5').style.display='block';
     document.getElementById('backButton').style.display = 'none';
 }
 function loadIframeContent() {
@@ -15,7 +19,14 @@ function loadIframeContent() {
     HideButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
-    <iframe src="./test.html" width=100% height=1000"> `;
+    <iframe src="./test.html" width=100% height=900> `;
+}
+function ProxyFullscreen() {
+    document.getElementById('contentFrame').style.display='block';
+    HideButtons();
+    let iframe = document.getElementById('contentFrame');
+    iframe.srcdoc = `
+    <iframe src="./hurr.html" width=100% height=900>`;
 }
 function loadIframer() {
     let website = prompt("Enter the website URL:");

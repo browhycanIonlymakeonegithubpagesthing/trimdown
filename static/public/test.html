@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>:0</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <script src="./settings.js"></script>
     <style>
-iframe {
-    display: block;
-    border: none; /* Removes any default border */
-}
+        iframe {
+            display: block;
+            border: none;
+        }
 
-.resize-handle {
-    /* Ensure the handle doesn't overlap with the iframe */
-    position: absolute;
-    bottom: -10px; /* Adjust as per the handle size */
-    right: -10px;
-}
+        .resize-handle {
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+        }
+
         .draggable {
             position: absolute;
-            width: 60%;
-            height: 500px;
+            width: 300px;
+            height: 200px;
             border: 1px solid #333;
             background-color: white;
+            display: none;
         }
+
         .draggable-header {
             padding: 5px;
             background-color: #333;
             color: white;
             cursor: move;
         }
+
         iframe {
             width: 100%;
             height: 100%;
         }
+
         .delete-button {
             float: right;
             cursor: pointer;
             color: white;
         }
+
         .resize-handle {
             width: 20px;
             height: 20px;
@@ -47,40 +54,64 @@ iframe {
             right: 0;
             cursor: se-resize;
         }
+
+        #settingsWindow {
+            top: 50px;
+            left: 50px;
+        }
     </style>
 </head>
+
 <body>
 
-<button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
-<button id="button2" onclick="createIframe('./games.html')">Games</button>
+    <button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
+    <button id="button2" onclick="createIframe('./games.html')">Games</button>
+    <button id="settingsButton" onclick="toggleSettings()">Settings</button>
 
-<script>
+    <div id="settingsWindow" class="draggable">
+        <div class="draggable-header">
+            Settings<span class="delete-button" onclick="toggleSettings()">X</span>
+        </div>
+        <div>
+            <button onclick="enableDarkMode()">Dark Mode</button>
+            <button onclick="enableLightMode()">Light Mode</button>
+            <button onclick="changeBackground()">Choose Background</button>
+            <button onclick="downloadLauncherFunction()">Download Launcher</button>
+        </div>
+        <div class="resize-handle"></div>
+    </div>
 
-    function createIframe(src) {
-        const iframeContainer = $('<div class="draggable"></div>');
-        const header = $('<div class="draggable-header">-<span class="delete-button">X</span></div>');
-        const iframe = $('<iframe></iframe>').attr("src", src);
-        const resizeHandle = $('<div class="resize-handle"></div>');
+    <script>
+        let zIndex = 1000;
 
-        header.find('.delete-button').on('click', function() {
-            $(this).closest('.draggable').remove();
-        });
+        function createIframe(src) {
+            const iframeContainer = $('<div class="draggable"></div>');
+            const header = $('<div class="draggable-header">-<span class="delete-button" onclick="removeIframe(this)">X</span></div>');
+            const iframe = $('<iframe></iframe>').attr("src", src);
+            const resizeHandle = $('<div class="resize-handle"></div>');
 
-        iframeContainer.append(header, iframe, resizeHandle)
-                       .appendTo('body')
-                       .draggable({
-                            handle: ".draggable-header",
-                            containment: "window",
-                            start: function() {
-                                $(this).css('z-index', zIndex++);
-                            }
-                        })
-                       .resizable({
-                            handles: {
-                                'se': resizeHandle
-                            }
-                        });
-    }
-</script>
+            header.on('click', function () {
+                $(this).closest('.draggable').css('z-index', zIndex++);
+            });
+
+            iframeContainer.append(header, iframe, resizeHandle)
+                .appendTo('body')
+                .draggable({
+                    handle: ".draggable-header",
+                    containment: "window",
+                    start: function () {
+                        $(this).css('z-index', zIndex++);
+                    }
+                })
+                .resizable({
+                    handles: {
+                        'se': resizeHandle
+                    }
+                });
+        }
+
+
+    </script>
 </body>
+
 </html>
