@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Button Function Activation</title>
+<title>_</title>
 <script src="./script.js"></script>
 </head>
 <body>
 
-<button id="button1" onclick="loadIframeContent()">Load New Content</button>
-<iframe id="contentFrame" style="display:none; width:100%; height:80%;"></iframe>
+<button id="button" onclick="loadIframeContent()" style="position:fixed; top:10px; left:10px">Load Proxy</button>
+<button id="button2" onclick="loadGames()" style="position:fixed;top:55px;left:10px;">Games</button>
+<iframe id="contentFrame" style="display:none; width:100%; height:1000px;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">Back to Original</button>
-
+<style>
+    button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #333;
+  font-size: 18px;
+  cursor: pointer;
+}
+</style>
 </body>
 </html>

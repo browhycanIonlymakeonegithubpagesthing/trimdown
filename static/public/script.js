@@ -1,20 +1,30 @@
-function loadIframeContent() {
-    // Display the iframe and back button
-    document.getElementById('contentFrame').style.display = 'block';
+function HideButtons() {
+    document.getElementById('button').style.display='none';
+    document.getElementById('button2').style.display='none';
     document.getElementById('backButton').style.display = 'block';
-
-    // Load new content into the iframe
+}
+function GetButtons() {
+    document.getElementById('button').style.display='block';
+    document.getElementById('button2').style.display='block';
+    document.getElementById('backButton').style.display = 'none';
+}
+function loadIframeContent() {
+    document.getElementById('contentFrame').style.display = 'block';
+    HideButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
-    ./hurr.html `;
+    <iframe src="./hurr.html" width=100% height=1000"> `;
 }
-
+function loadGames() {
+    document.getElementById('contentFrame').style.display = 'block';
+    HideButtons();
+    let iframe = document.getElementById('contentFrame');
+    iframe.srcdoc = `
+    <iframe src="./games.html" width=100% height=1000"> `;
+}
 function hideIframeContent() {
-    // Hide the iframe and back button
     document.getElementById('contentFrame').style.display = 'none';
-    document.getElementById('backButton').style.display = 'none';
-
-    // Clear the iframe content if needed
+    GetButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = '';
 }
