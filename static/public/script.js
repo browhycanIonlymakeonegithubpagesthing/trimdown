@@ -15,26 +15,29 @@ function GetButtons() {
     document.getElementById('backButton').style.display = 'none';
 }
 function loadIframeContent() {
-    document.getElementById('contentFrame').style.display = 'block';
+    let contentFrame = document.getElementById('contentFrame');
+    contentFrame.style.display = 'block';
     HideButtons();
-    let iframe = document.getElementById('contentFrame');
-    iframe.srcdoc = `
-    <iframe src="./test.html" width=100% height=900> `;
+    
+    contentFrame.srcdoc = `
+        <iframe src="./test.html" width=100% height=${contentFrame.clientHeight}>`;
 }
+
 function ProxyFullscreen() {
     document.getElementById('contentFrame').style.display='block';
     HideButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
-    <iframe src="./hurr.html" width=100% height=900>`;
+    <iframe src="./hurr.html" width=100% height=${contentFrame.clientHeight}>`;
 }
 function youtube(){
     document.getElementById('contentFrame').style.display='block';
     HideButtons();
     let iframe=document.getElementById('contentFrame');
     iframe.srcdoc= `
-    <iframe src="https://ytbyp.mathonline.click" width=100% height=900>`;
+    <iframe src="https://ytbyp.mathonline.click" width=100% height=${contentFrame.clientHeight}>`;
 }
+
 function loadIframer() {
     let website = prompt("Enter the website URL:");
     if (!website.startsWith("https://")) {
@@ -81,6 +84,8 @@ function GameLoader() {
         
         iframe {
             border: none;
+            height: 100vh;
+            width: 100%;
         }
         
     </style>
@@ -104,7 +109,7 @@ function GameLoader() {
         buttons.forEach(function(button) {
             button.addEventListener('click', function() {
                 var url = this.getAttribute('data-url');
-                document.body.innerHTML = '<iframe src="' + url + '" style="width:100%; height:100vh;"></iframe>';
+                document.body.innerHTML = '<iframe src="' + url + '"></iframe>';
             });
         });
 
