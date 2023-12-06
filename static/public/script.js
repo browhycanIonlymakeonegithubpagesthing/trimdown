@@ -43,11 +43,12 @@ function loadIframer() {
     if (!website.startsWith("https://")) {
         website = "https://" + website;
     }
-    HideButtons();
+    HideButtons(); 
     let iframe = document.getElementById('contentFrame');
     iframe.style.display = 'block';
-    iframe.src = website;
+    iframe.srcdoc = `<html><head></head><body><iframe src="${website}" width="100%" height="${iframe.clientHeight}"></iframe></body></html>`;
 }
+
 function GameLoader() {
     document.getElementById('contentFrame').style.display = 'block';
     HideButtons();
