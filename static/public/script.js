@@ -33,7 +33,7 @@ function youtube(){
     HideButtons();
     let iframe=document.getElementById('contentFrame');
     iframe.srcdoc= `
-    <iframe src="https://ytbyp.renderisgood.workers.dev/" width=100% height=900>`;
+    <iframe src="https://ytbyp.mathonline.click" width=100% height=900>`;
 }
 function loadIframer() {
     let website = prompt("Enter the website URL:");
@@ -87,7 +87,7 @@ function GameLoader() {
 </head>
 <body>
     <input type="text" id="searchBox" placeholder="Search for a site...">
-    <button class="loadIframe" data-url="./Games/rb">Retrol Bowl</button>
+    <button class="loadIframe" data-url="./Games/rb">Retro Bowl</button>
     <button class="loadIframe" data-url="./Games/pk">Progress Knight</button>
     <button class="loadIframe" data-url="./Games/te">Tetris</button>
     <button class="loadIframe" data-url="./Games/sb">SnowBattle</button>
@@ -97,13 +97,13 @@ function GameLoader() {
     <button class="loadIframe" data-url="./Games/whg2">World's Hardest Game 2 (real)</button>
     <button class="loadIframe" data-url="./Games/ib">Idle Breakout</button>
     <button class="loadIframe" data-url="./Games/cc">Cookie Clicker (version 2.048)</button>
+    <button class="loadIframe" data-url="./Games/br">The Backrooms</button>
     <script>
         var buttons = document.querySelectorAll('.loadIframe');
 
         buttons.forEach(function(button) {
             button.addEventListener('click', function() {
                 var url = this.getAttribute('data-url');
-                alert("you will need to reload the gamesite to choose a new game.");
                 document.body.innerHTML = '<iframe src="' + url + '" style="width:100%; height:100vh;"></iframe>';
             });
         });

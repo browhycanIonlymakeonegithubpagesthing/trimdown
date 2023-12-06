@@ -132,40 +132,48 @@ iframe {
 <button id="button2" onclick="createIframe('./games.html')">Games</button>
 
 <script>
-$(function() {
-    function createIframe(src) {
-        const iframeContainer = $('<div class="draggable" style="z-index: 1000;"></div>');
-        const header = $('<div class="draggable-header">-</div>');
-        const closeButton = $('<span class="delete-button">X</span>');
-        const iframe = $('<iframe></iframe>').attr("src", src);
-        const resizeHandle = $('<div class="resize-handle"></div>');
-
-        closeButton.on('click', function() {
-            $(this).closest('.draggable').remove();
+    $(function() {
+        var highestZIndex = 1000; // Global variable for tracking the highest z-index
+    
+        function createIframe(src) {
+            const iframeContainer = $('<div class="draggable"></div>');
+            const header = $('<div class="draggable-header">-</div>');
+            const closeButton = $('<span class="delete-button">X</span>');
+            const iframe = $('<iframe></iframe>').attr("src", src);
+            const resizeHandle = $('<div class="resize-handle"></div>');
+    
+            closeButton.on('click', function() {
+                $(this).closest('.draggable').remove();
+            });
+    
+            header.append(closeButton);
+            iframeContainer.append(header, iframe, resizeHandle)
+                           .appendTo('body')
+                           .draggable({
+                                handle: ".draggable-header",
+                                start: function() {
+                                    highestZIndex++; // Increment the z-index
+                                    $(this).css('z-index', highestZIndex); // Apply new z-index
+                                }
+                            })
+                           .resizable({
+                                handles: {
+                                    'se': resizeHandle
+                                }
+                            });
+    
+            iframeContainer.css('z-index', highestZIndex); // Set initial z-index
+        }
+    
+        $("#button").click(function() {
+            createIframe('./hurr.html');
         });
-
-        header.append(closeButton);
-        iframeContainer.append(header, iframe, resizeHandle)
-                       .appendTo('body')
-                       .draggable({
-                            handle: ".draggable-header"
-                        })
-                       .resizable({
-                            handles: {
-                                'se': resizeHandle
-                            }
-                        });
-    }
-
-    $("#button").click(function() {
-        createIframe('./hurr.html');
+    
+        $("#button2").click(function() {
+            createIframe('./games.html');
+        });
     });
-
-    $("#button2").click(function() {
-        createIframe('./games.html');
-    });
-});
-
-</script>
+    </script>
+    
 </body>
 </html>
