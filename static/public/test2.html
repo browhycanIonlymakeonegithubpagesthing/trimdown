@@ -14,6 +14,7 @@
     <p>3kh0, the GOAT made most of the games :)</p>
   <p>dont bully me..</p>
       <h2>Changelog</h2>
+      <p>December 5th, fixed a lot of bugs</p>
       <p>December 4th, Reworked EVERYTHING!! Started work on making a game site!</p>
       <p>November 27th, finally started work!</p>
       <h2>Features</h2>
@@ -25,7 +26,8 @@
 <button id="button2" onclick="loadIframer()" style="position:fixed;top:55px;left:10px;">WebsiteLoader</button>
 <button id="button3" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button4" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
-<iframe id="contentFrame" style="display:none; width:100%; height:1000px;"></iframe>
+<button id="button5" onclick="youtube()" style="position:fixed;top:190px;left:10px">Youtube Iframer (NO ADS)</button>
+<iframe id="contentFrame" style="display:none; width:100%; height:900px;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
       function closePopup() {
@@ -46,7 +48,15 @@
   font-size: 28px;
   font-weight: bold;
 }
-
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Existing background color */
+    background-image: url('./images/gp1.png'); /* Add this line for background image */
+    background-size: cover; /* Ensures the image covers the entire body */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    margin: 0;
+    padding: 20px;
+}
 .close:hover,
 .close:focus {
   color: black;

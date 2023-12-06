@@ -3,6 +3,7 @@ function HideButtons() {
     document.getElementById('button2').style.display='none';
     document.getElementById('button3').style.display='none';
     document.getElementById('button4').style.display='none';
+    document.getElementById('button5').style.display='none';
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
@@ -10,6 +11,7 @@ function GetButtons() {
     document.getElementById('button2').style.display='block';
     document.getElementById('button3').style.display='block';
     document.getElementById('button4').style.display='block';
+    document.getElementById('button5').style.display='block';
     document.getElementById('backButton').style.display = 'none';
 }
 function loadIframeContent() {
@@ -25,6 +27,13 @@ function ProxyFullscreen() {
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
     <iframe src="./hurr.html" width=100% height=900>`;
+}
+function youtube(){
+    document.getElementById('contentFrame').style.display='block';
+    HideButtons();
+    let iframe=document.getElementById('contentFrame');
+    iframe.srcdoc= `
+    <iframe src="https://ytbyp.renderisgood.workers.dev/" width=100% height=900>`;
 }
 function loadIframer() {
     let website = prompt("Enter the website URL:");
@@ -43,6 +52,37 @@ function GameLoader() {
     iframe.srcdoc = `
     <style>
         .hidden { display: none; }
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        #searchBox {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        
+        button.loadIframe {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+        }
+        
+        button.loadIframe:hover {
+            background-color: #45a049;
+        }
+        
+        iframe {
+            border: none;
+        }
+        
     </style>
 </head>
 <body>
