@@ -3,7 +3,6 @@ function HideButtons() {
     document.getElementById('button2').style.display='none';
     document.getElementById('button3').style.display='none';
     document.getElementById('button4').style.display='none';
-    document.getElementById('button5').style.display='none';
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
@@ -11,7 +10,6 @@ function GetButtons() {
     document.getElementById('button2').style.display='block';
     document.getElementById('button3').style.display='block';
     document.getElementById('button4').style.display='block';
-    document.getElementById('button5').style.display='block';
     document.getElementById('backButton').style.display = 'none';
 }
 function loadIframeContent() {
