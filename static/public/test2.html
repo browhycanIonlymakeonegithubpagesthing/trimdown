@@ -3,10 +3,14 @@
 <head>
 <title>_</title>
 <script src="./script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/intro.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/introjs.min.css">
 </head>
 <body>
   <div id="infoModal" class="modal">
     <div class="modal-content">
+      <!-- Add this button inside modal-content -->
+      <button id="walkthroughButton" onclick="startWalkthrough()">Walkthrough</button>
       <span class="close" onclick="closePopup()">&times;</span>
           <h1>Cl0@k3r</h1>
   <p> A simple static ultraviolet proxy by insert text here</p>
@@ -30,13 +34,49 @@
 <button id="button2" onclick="loadIframer()" style="position:fixed;top:55px;left:10px;">WebsiteLoader</button>
 <button id="button3" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button4" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
-<button id="button5" onclick="youtube()" style="position:fixed;top:190px;left:10px">youtube iframer (piped.video)</button>
 <iframe id="contentFrame" style="display:none; width:100%; height:100vh;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
-      function closePopup() {
-      document.getElementById("infoModal").style.display = "none";
+    function closePopup() {
+        document.getElementById("infoModal").style.display = "none";
     }
+
+    function startWalkthrough() {
+      closePopup();
+        introJs().setOptions({
+            steps: [
+                {
+                    intro: "Welcome to the tutorial. We'll give you everything you need to know about Clo@k3r.",
+                    position: 'bottom',
+                },
+                {
+                    element: '#button',
+                    intro: "This is the WindowMaker button. It acts as a window creator, with the ability to make draggable, resizable iframes.",
+                    position: 'right',
+                },
+                {
+                    element: '#button2',
+                    intro: "This is a Iframer. Enter in your URL, and then click OK. If it says that it 'refused to connect', it may be blocked or not Iframeable. An example of this is Chess.com, which is not iframeable.",
+                    position: 'right',
+                },
+                {
+                    element: '#button3',
+                    intro: "This is the Games section. Please, give us suggestions for us to add more! It helps us a lot to know what to add.",
+                    position: 'right',
+                },
+                {
+                  element: '#button4',
+                  intro : "This is the proxy, fullscreen. This is a UV proxy, so please don't try to use Youtube here, it most likely won't let you skip ads. Use Bing instead, as it lets you watch youtube videos without being blocked."
+                }
+            ],
+            showStepNumbers: false,
+            exitOnOverlayClick: true,
+            exitOnEsc: true,
+            scrollToElement: true,
+            hideNext: false,
+        }).start();
+    }
+
     let zIndex = 1000;
 </script>
 <style>
@@ -103,6 +143,17 @@ body {
   font-size: 18px;
   cursor: pointer;
 }
+#walkthroughButton {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            background-color: #333;
+            font-size: 18px;
+            cursor: pointer;
+        }
 </style>
 </body>
 </html>

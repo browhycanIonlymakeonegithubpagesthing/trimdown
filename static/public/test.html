@@ -129,10 +129,20 @@ iframe {
 
 <button id="button" onclick="createIframe('./hurr.html')">Load Proxy</button>
 <button id="button2" onclick="createIframe('./games.html')">Games</button>
-
+<button id="button3" onclick="processURL()">Iframer</button>
 <script>
+
     $(function() {
         var highestZIndex = 1000; 
+        function processURL() {
+        let userURL = prompt("Enter the website URL:");
+        
+        if (!userURL.startsWith('https://')) {
+            userURL = 'https://' + userURL;
+        }
+        
+        createIframe(userURL);
+    }    
         function createIframe(src) {
             const iframeContainer = $('<div class="draggable"></div>');
             const header = $('<div class="draggable-header">-</div>');
@@ -159,6 +169,9 @@ iframe {
                             });
             iframeContainer.css('z-index', highestZIndex); // Set initial z-index
         }
+        $("#button3").click(function() {
+            processURL();
+        })
         $("#button").click(function() {
             createIframe('./hurr.html');
         });

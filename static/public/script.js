@@ -3,7 +3,6 @@ function HideButtons() {
     document.getElementById('button2').style.display='none';
     document.getElementById('button3').style.display='none';
     document.getElementById('button4').style.display='none';
-    document.getElementById('button5').style.display='none';
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
@@ -11,7 +10,6 @@ function GetButtons() {
     document.getElementById('button2').style.display='block';
     document.getElementById('button3').style.display='block';
     document.getElementById('button4').style.display='block';
-    document.getElementById('button5').style.display='block';
     document.getElementById('backButton').style.display = 'none';
 }
 function loadIframeContent() {
@@ -30,13 +28,7 @@ function ProxyFullscreen() {
     iframe.srcdoc = `
     <iframe src="./hurr.html" width=100% height=${contentFrame.clientHeight}>`;
 }
-function youtube(){
-    document.getElementById('contentFrame').style.display='block';
-    HideButtons();
-    let iframe=document.getElementById('contentFrame');
-    iframe.srcdoc= `
-    <iframe src="https://ytbyp.mathonline.click" width=100% height=${contentFrame.clientHeight}>`;
-}
+
 
 function loadIframer() {
     let website = prompt("Enter the website URL:");
@@ -110,6 +102,9 @@ iframe {
 <button class="loadIframe" data-url="https://turbowarp.org/389464290/embed">Getting Over It</button>
 <button class="loadIframe" data-url="https://turbowarp.org/105500895/embed">Geometry Dash (levels 1-3)</button>
 <button class="loadIframe" data-url="https://turbowarp.org/216343253/embed">Geometry Dash Subzero</button>
+<button class="loadIframe" data-url="https://astroid.mathonline.click/service/hvtr%3A-%2Flouge.ll">Roblox (borken)</button>
+<button class="loadIframe" data-url="./Games/EC.html">Minecraft V1.5.2</button>
+<button class="loadIframe" data-url="https://forms.gle/pZKpLhcvWGdwEBPY6">Request a Game</button>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var buttons = document.querySelectorAll('.loadIframe');
