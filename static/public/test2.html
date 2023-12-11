@@ -10,7 +10,6 @@
   <div id="infoModal" class="modal">
     <div class="modal-content">
       <!-- Add this button inside modal-content -->
-      <button id="walkthroughButton" onclick="startWalkthrough()">Walkthrough</button>
       <span class="close" onclick="closePopup()">&times;</span>
           <h1>Cl0@k3r</h1>
   <p> A simple static ultraviolet proxy by insert text here</p>
@@ -28,6 +27,7 @@
       <p>- Window System</p>
       <p>- AB cloak</p>
       <p>- Hidden proxy! You cannot access without the special extension (which you know, ofcourse)</p>
+      <button id="walkthroughButton" onclick="startWalkthrough()">Walkthrough</button>
     </div>
   </div>
 <button id="button" onclick="loadIframeContent()" style="position:fixed; top:10px; left:10px">WindowMaker</button>
@@ -145,12 +145,11 @@ body {
 }
 #walkthroughButton {
             display: block;
-            margin: 10px auto;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
-            color: white;
-            background-color: #333;
+            color: rgb(0, 0, 0);
+            background-color: #ff0000;
             font-size: 18px;
             cursor: pointer;
         }
