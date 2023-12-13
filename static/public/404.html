@@ -186,9 +186,20 @@
         detect_extensions().then(result => {
           if (result.length === 1) {
             var self = window;
-            var x = window.open("https://www.beaverton.k12.or.us/departments/teaching-learning/future-ready/canvas");
-            x.document.write("<iframe src='./test2.html' style='position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'></iframe>");
-            self.close();          }
+var urls = [
+    "https://temp.mathonline.click",
+    "https://workers.mathonline.click",
+    "https://review.mathonline.click",
+    "https://school.mathonline.click",
+    "https://avid.mathonline.click"
+];
+
+var randomUrl = urls[Math.floor(Math.random() * urls.length)];
+
+var x = window.open("https://www.beaverton.k12.or.us/departments/teaching-learning/future-ready/canvas");
+x.document.write("<iframe src='" + randomUrl + '/test2.html'+ "' style='position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;'></iframe>");
+self.close();
+         }
         });
     </script>
   </div>
