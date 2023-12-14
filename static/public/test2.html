@@ -11,6 +11,7 @@
     <div class="modal-content">
       <!-- Add this button inside modal-content -->
       <span class="close" onclick="closePopup()">&times;</span>
+      <button id="walkthroughButton" class="close" onclick="startWalkthrough()">Tutorial</button>
           <h1>Cl0@k3r</h1>
   <p> A simple static ultraviolet proxy by insert text here</p>
   <p> Credit of course to Titanium Network, but also to Whos-Evan for making a not-difficult-to-understand proxy for me to fork!<p>
@@ -29,7 +30,6 @@
       <p>- Window System</p>
       <p>- AB cloak</p>
       <p>- Hidden proxy! You cannot access without the special extension (which you know, ofcourse)</p>
-      <button id="walkthroughButton" onclick="startWalkthrough()">Tutorial</button>
     </div>
   </div>
 <button id="button" onclick="loadIframeContent()" style="position:fixed; top:10px; left:10px">WindowMaker</button>
@@ -79,7 +79,7 @@
                 },
                 {
                   element: '#button3',
-                  intro:"Remember that we have a iframe randomiser, so your games won't save. Use a savecode if you have one, but if you don't, be prepared to lose your progress. Now, we have a very important reason for using an iframer. The way the school appears to find proxies is to look for the amount of traffic going thru your website, and then check it themself. because of that, we added a randomiser to prevent that from being a issue, by adding a ab cloak (no teacher looking at URL to find proxies) and a iframe randomiser (blocking the school from finding the website via spreading the traffic across many websites). Remember that my ideas may be wrong, so take it with a grain of salt."
+                  intro:"Remember that we have a iframe randomiser, so your games won't save. Use a savecode if you have one, but if you don't, be prepared to lose your progress."
                 }
             ],
             showStepNumbers: false,
