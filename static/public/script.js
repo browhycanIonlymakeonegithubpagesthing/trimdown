@@ -45,8 +45,8 @@ function GameLoader() {
     document.getElementById('contentFrame').style.display = 'block';
     HideButtons();
     let iframe = document.getElementById('contentFrame');
-    iframe.srcdoc = `
- <iframe src="./games.html" width=“100%” height="${iframe.clientHeight}"></iframe>
+    iframe.srcdoc = `"
+ <iframe src="./games.html" width="100%" height="${iframe.clientHeight}"></iframe>
  `;
 }
 function hideIframeContent() {
