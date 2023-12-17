@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    h1 {
+  text-align: center;
+  color: burlywood;
+  font-size: 2.5em;
+}
+label {
+  text-align: center;
+  color: burlywood;
+}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Settings</h1>
+  <label for="background">Funni Cursor Effects</label>
+  <select id="background" onchange="saveSettings()">
+    <option value="true">Yes</option>
+    <option value="false">Hell no</option>
+  </select>
+  <br>
+  <label for="proxy">Proxy</label>
+  <select id="proxy" onchange="saveSettings()">
+    <option value="interstellar">Interstellar</option>
+    <option value="astroid">Astroid</option>
+    <option value="none">Clo@k3r</option>
+</select>
+</div>
+
+<script>
+  // Function to save settings to localStorage
+  function saveSettings() {
+    const background = document.getElementById("background").value;
+    const proxy = document.getElementById("proxy").value
+
+    localStorage.setItem("proxy", proxy)
+    localStorage.setItem("draw", background);
+
+    alert("Settings saved!");
+  }
+
+  window.onload = function() {
+    const savedType = localStorage.getItem("userType");
+    const savedBackground = localStorage.getItem("userBackground");
+
+    if (savedBackground) {
+      document.getElementById("background").value = savedBackground;
+    }
+  };
+</script>
+
+</body>
+</html>

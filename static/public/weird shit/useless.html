@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h1>Settings</h1>
+
+<label for="username">Username:</label>
+<input type="text" id="username">
+<button onclick="saveUsername()">Save</button>
+
+<script>
+  // Function to save the username to localStorage
+  function saveUsername() {
+    const username = document.getElementById("username").value;
+    localStorage.setItem("username", username);
+    alert("Username saved!");
+  }
+
+  // Function to load the saved username on page load
+  window.onload = function() {
+    const savedUsername = localStorage.getItem("username");
+    if (savedUsername) {
+      document.getElementById("username").value = savedUsername;
+    }
+  };
+</script>
+
+</body>
+</html>

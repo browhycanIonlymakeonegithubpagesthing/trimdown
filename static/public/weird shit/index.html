@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Settings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Settings</h1>
+
+  <label for="type">Select Type:</label>
+  <select id="type" onchange="saveSettings()">
+    <option value="elixir">Elixir</option>
+    <option value="astroid">Astroid</option>
+    <option value="interstellar">Interstellar</option>
+  </select>
+  <br><br>
+
+  <label for="background">Select Background:</label>
+  <select id="background" onchange="saveSettings()">
+    <option value="none">None</option>
+    <option value="8bit">8bit</option>
+    <option value="chatgpt">ChatGPT</option>
+  </select>
+</div>
+
+<script>
+  // Function to save settings to localStorage
+  function saveSettings() {
+    const type = document.getElementById("type").value;
+    const background = document.getElementById("background").value;
+
+    localStorage.setItem("userType", type);
+    localStorage.setItem("userBackground", background);
+
+    alert("Settings saved!");
+  }
+
+  // Function to load saved settings on page load
+  window.onload = function() {
+    const savedType = localStorage.getItem("userType");
+    const savedBackground = localStorage.getItem("userBackground");
+
+    if (savedType) {
+      document.getElementById("type").value = savedType;
+    }
+
+    if (savedBackground) {
+      document.getElementById("background").value = savedBackground;
+    }
+  };
+</script>
+
+</body>
+</html>

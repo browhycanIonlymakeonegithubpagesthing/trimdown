@@ -18,6 +18,7 @@
     <p>3kh0, the GOAT made most of the games :)</p>
   <p>dont bully me..</p>
       <h2>Changelog</h2>
+      <p>December 17th, saw the localstorage stuff in interstellar and decided to add it, because why not! After a ton of source spaghetti, i finally added the game favouriter! jesus christ it took too long.</p>
       <p>December 15th, MORE GAMES!!!</p>
       <p>December 14th, added two new games</p>
       <p>December 13th, added a URL randomiser</p>
@@ -40,13 +41,19 @@
 <button id="button2" onclick="loadIframer()" style="position:fixed;top:55px;left:10px;">WebsiteLoader</button>
 <button id="button3" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button4" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
+<button id="button5" onclick="Settings()" style="position:fixed;top:190px;left:10px">Settings</button>
 <iframe id="contentFrame" style="display:none; width:100%; height:100vh;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
-    function closePopup() {
+function closePopup() {
+    document.getElementById("infoModal").style.display = "none";
+    localStorage.setItem('popupClosed', 'true');
+}
+window.onload = function() {
+    if(localStorage.getItem('popupClosed') === 'true') {
         document.getElementById("infoModal").style.display = "none";
     }
-
+}
     function startWalkthrough() {
       closePopup();
         introJs().setOptions({
@@ -73,6 +80,10 @@
                 {
                   element: '#button4',
                   intro : "This is the proxy, fullscreen. This is a UV proxy, so please don't try to use Youtube here, it most likely won't let you skip ads. Use Bing instead, as it lets you watch youtube videos without being blocked."
+                },
+                {
+element: '#button5',
+intro : "Set your settings here, guys. Proxies, the funni cursor effect, all the stuff."
                 },
                 {
                   intro:"Time for some knowledge dumping. I'll be explaining some bypasses, and you can use em if you want. Most of the code was written by chatgpt lol"
@@ -242,6 +253,7 @@ document.addEventListener('click', function(event) {
     particles.push(new Particle(event.clientX, event.clientY));
   }
 });
-
+if(localStorage.getItem('draw') === 'true') {
 draw();
+}
 </script>

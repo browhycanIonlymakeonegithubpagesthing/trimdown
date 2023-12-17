@@ -3,6 +3,7 @@ function HideButtons() {
     document.getElementById('button2').style.display='none';
     document.getElementById('button3').style.display='none';
     document.getElementById('button4').style.display='none';
+    document.getElementById('button5').style.display='none';
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
@@ -10,8 +11,30 @@ function GetButtons() {
     document.getElementById('button2').style.display='block';
     document.getElementById('button3').style.display='block';
     document.getElementById('button4').style.display='block';
-    document.getElementById('backButton').style.display = 'none';
+    document.getElementById('button5').style.display='block';
+    document.getElementById('backButton').style.display = 'none'; 
 }
+function ProxyFullscreen() {
+    let contentFrame = document.getElementById('contentFrame');
+    contentFrame.style.display = 'block';
+    HideButtons();
+
+    let proxyItem = localStorage.getItem('proxy');
+    let iframeUrl;
+
+    if (proxyItem === 'astroid') {
+        iframeUrl = 'https://astroid.mathonline.click';
+    } else if (proxyItem === 'interstellar') {
+        iframeUrl = 'https://igobylotsofnames.mathonline.click'
+}else {
+        iframeUrl = './hurr.html';
+    }
+    
+    contentFrame.srcdoc = `
+        <iframe src="${iframeUrl}" width=100% height=${contentFrame.clientHeight}></iframe>`;
+}
+
+
 function loadIframeContent() {
     let contentFrame = document.getElementById('contentFrame');
     contentFrame.style.display = 'block';
@@ -20,15 +43,13 @@ function loadIframeContent() {
     contentFrame.srcdoc = `
         <iframe src="./test.html" width=100% height=${contentFrame.clientHeight}>`;
 }
-
-function ProxyFullscreen() {
+function Settings() {
     document.getElementById('contentFrame').style.display='block';
     HideButtons();
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = `
-    <iframe src="./hurr.html" width=100% height=${contentFrame.clientHeight}>`;
+    <iframe src="./settings.html" width=100% height=${contentFrame.clientHeight}>`;
 }
-
 
 function loadIframer() {
     let website = prompt("Enter the website URL:");
