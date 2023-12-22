@@ -4,7 +4,21 @@
     <title>:0</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
+.resize-handle {
+    width: 20px;
+    height: 20px;
+    background-image: url('./images/download.png'); /* Replace 'path/to/your/image.png' with your image file path */
+    background-size: contain; /* Adjust this according to your image size */
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    /* Other properties */
+}
+
+
 iframe {
     display: block;
     border: none; 
@@ -40,7 +54,6 @@ iframe {
         .resize-handle {
             width: 20px;
             height: 20px;
-            background-color: grey;
             position: absolute;
             bottom: 0;
             right: 0;
@@ -90,7 +103,6 @@ iframe {
     .resize-handle {
         width: 20px;
         height: 20px;
-        background-color: #888;
         position: absolute;
         bottom: 0;
         right: 0;
@@ -173,7 +185,16 @@ iframe {
             processURL();
         })
         $("#button").click(function() {
-            createIframe('./hurr.html');
+            let proxyItem = localStorage.getItem('proxy');
+    let iframeUrl;
+
+    if (proxyItem === 'astroid') {
+        createIframe('https://astroid.mathonline.click/worksheets/');
+    } else if (proxyItem === 'interstellar') {
+        createIframe('https://igobylotsofnames.mathonline.click');
+}else {
+    createIframe('./hurr.html');
+    }
         });
         $("#button2").click(function() {
             createIframe('./games.html');

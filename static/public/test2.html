@@ -43,6 +43,15 @@
 <button id="button3" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button4" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
 <button id="button5" onclick="Settings()" style="position:fixed;top:190px;left:10px">Settings</button>
+<!--
+<button id="panicButton" style="display: none;" onclick="openNewWindow()">PANIC</button>
+!-->
+<div id="alarmClock">
+  <div id="clockFace">
+    <p id="clockTime"></p>
+    <p id="clockAmPm"></p>
+  </div>
+</div>
 <iframe id="contentFrame" style="display:none; width:100%; height:100vh;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
@@ -111,8 +120,54 @@ intro : "Set your settings here, guys. Proxies, the funni cursor effect, all the
     }
 
     let zIndex = 1000;
+    function updateClock() {
+  const now = new Date();
+  let hours = now.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  const amPm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12 || 12; // Convert to 12-hour format
+
+  const time = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  document.getElementById('clockTime').textContent = time;
+  document.getElementById('clockAmPm').textContent = amPm;
+}
+
+// Update the clock every second
+setInterval(updateClock, 1000);
+
 </script>
 <style>
+  #alarmClock {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+  #panicButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+#clockFace {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+#clockTime {
+  font-size: 24px;
+  margin: 0;
+}
+
+#clockAmPm {
+  font-size: 14px;
+  margin: 0;
+}
+
           body, html {
   margin: 0;
   padding: 0;
