@@ -3,21 +3,28 @@
 <head>
 <title>_</title>
 <script src="./script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/intro.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/introjs.min.css">
+<link rel="stylesheet" href="./index.css">
 </head>
 <body>
   <div id="infoModal" class="modal">
     <div class="modal-content">
-      <!-- Add this button inside modal-content -->
       <span class="close" onclick="closePopup()">&times;</span>
       <button id="walkthroughButton" class="close" onclick="startWalkthrough()">Tutorial</button>
           <h1>Cl0@k3r</h1>
   <p> A simple static ultraviolet proxy by insert text here</p>
   <p> Credit of course to Titanium Network, but also to Whos-Evan for making a not-difficult-to-understand proxy for me to fork!<p>
+    <h2>Features</h2>
+    <p>- URL randomiser</p>
+    <p>- Tons of Games</p>
+    <p>- Built In Iframer</p>
+    <p>- Window System</p>
+    <p>- AB cloak</p>
+    <p>- Hidden proxy! You cannot access without the special extension (which you know, ofcourse)</p>
     <p>3kh0, the GOAT made most of the games :)</p>
   <p>dont bully me..</p>
       <h2>Changelog</h2>
+      <p>Demeber 23th, added a panic button. Not very useful right now, but it'll do..</p>
       <p>December 22th, started work on new settings, grouped up the games, and added a clock which may or may not be huge in the future (???)</p>
       <p>December 20th, lots of bug fixes! maybe a bit too many bug fixes....</p>
       <p>December 17th, saw the localstorage stuff in interstellar and decided to add it, because why not! After a ton of source spaghetti, i finally added the game favouriter! jesus christ it took too long.</p>
@@ -30,13 +37,6 @@
       <p>December 5th, fixed a lot of bugs</p>
       <p>December 4th, Reworked EVERYTHING!! Started work on making a game site!</p>
       <p>November 27th, finally started work!</p>
-      <h2>Features</h2>
-      <p>- URL randomiser</p>
-      <p>- Tons of Games</p>
-      <p>- Built In Iframer</p>
-      <p>- Window System</p>
-      <p>- AB cloak</p>
-      <p>- Hidden proxy! You cannot access without the special extension (which you know, ofcourse)</p>
     </div>
   </div>
 <button id="button" onclick="loadIframeContent()" style="position:fixed; top:10px; left:10px">WindowMaker</button>
@@ -44,9 +44,7 @@
 <button id="button3" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button4" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
 <button id="button5" onclick="Settings()" style="position:fixed;top:190px;left:10px">Settings</button>
-<!--
-<button id="panicButton" style="display: none;" onclick="openNewWindow()">PANIC</button>
-!-->
+<button id="panicButton" style="display: none;" onclick="window.open(panicURL)">PANIC</button>
 <div id="alarmClock">
   <div id="clockFace">
     <p id="clockTime"></p>
@@ -56,6 +54,13 @@
 <iframe id="contentFrame" style="display:none; width:100%; height:100vh;"></iframe>
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
+  const panic = localStorage.getItem("panicURL")
+  if (panic) {
+    var panicURL = panic
+  }
+  else {
+    var panicURL="https://drive.google.com/drive/u/0/home"
+  }
 function closePopup() {
     document.getElementById("infoModal").style.display = "none";
     localStorage.setItem('popupClosed', 'true');
@@ -121,132 +126,7 @@ intro : "Set your settings here, guys. Proxies, the funni cursor effect, all the
     }
 
     let zIndex = 1000;
-    function updateClock() {
-  const now = new Date();
-  let hours = now.getHours();
-  const minutes = now.getMinutes();
-  const seconds = now.getSeconds();
-  const amPm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12 || 12; // Convert to 12-hour format
-
-  const time = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-  document.getElementById('clockTime').textContent = time;
-  document.getElementById('clockAmPm').textContent = amPm;
-}
-
-// Update the clock every second
-setInterval(updateClock, 1000);
-
-</script>
-<style>
-  #alarmClock {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  padding: 10px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
-}
-  #panicButton {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-}
-#clockFace {
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-#clockTime {
-  font-size: 24px;
-  margin: 0;
-}
-
-#clockAmPm {
-  font-size: 14px;
-  margin: 0;
-}
-
-          body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-        .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4; /* Existing background color */
-    background-image: url('./images/gp1.png'); /* Add this line for background image */
-    background-size: cover; /* Ensures the image covers the entire body */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    margin: 0;
-    padding: 20px;
-}
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-        .modal {
-  display: block; 
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-        .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-        .draggable, .draggable * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-    button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  background-color: #333;
-  font-size: 18px;
-  cursor: pointer;
-}
-#walkthroughButton {
-            display: block;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            color: rgb(0, 0, 0);
-            background-color: #ff0000;
-            font-size: 18px;
-            cursor: pointer;
-        }
-</style>
-</body>
-</html>
-<script>
-  const canvas = document.createElement('canvas');
+    const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
 let particles = [];
 
@@ -314,3 +194,5 @@ if(localStorage.getItem('draw') === 'true') {
 draw();
 }
 </script>
+</body>
+</html>

@@ -5,6 +5,10 @@ function HideButtons() {
     document.getElementById('button4').style.display='none';
     document.getElementById('button5').style.display='none';
     document.getElementById('alarmClock').style.display='none';
+    const panic = localStorage.getItem('panic');
+    if (panic === 'on') {
+    document.getElementById('panicButton').style.display='block';
+    }
     document.getElementById('backButton').style.display = 'block';
 }
 function GetButtons() {
@@ -25,7 +29,7 @@ function ProxyFullscreen() {
     let iframeUrl;
 
     if (proxyItem === 'astroid') {
-        iframeUrl = 'https://astroid.mathonline.click';
+        iframeUrl = 'https://astroid.mathonline.click/worksheets';
     } else if (proxyItem === 'interstellar') {
         iframeUrl = 'https://igobylotsofnames.mathonline.click'
 }else {
@@ -78,17 +82,17 @@ function hideIframeContent() {
     let iframe = document.getElementById('contentFrame');
     iframe.srcdoc = '';
 }
-function openNewWindow() {
-    const selectedOption = document.getElementById("Periods").value;
-    const scheduleData = JSON.parse(localStorage.getItem(selectedOption));
 
-    // Assuming the link is in the first row of the schedule table
-    if (scheduleData && scheduleData.length > 0) {
-        const urlFromSchedule = scheduleData[0].link;
-        if (urlFromSchedule.startsWith("https://")) {
-            window.open(urlFromSchedule, '_blank');
-        } else {
-            window.open(`https://${urlFromSchedule}`, '_blank');
-        }
-    }
-}
+function updateClock() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+    const amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12 || 12; // Convert to 12-hour format
+  
+    const time = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    document.getElementById('clockTime').textContent = time;
+    document.getElementById('clockAmPm').textContent = amPm;
+  }
+  setInterval(updateClock, 1000);
