@@ -1,72 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Tab Interface</title>
-  <style>
-    /* Your CSS styles for tabs here */
-    .tabs {
-      overflow: hidden;
-    }
-
-    .tablink {
-      background-color: #f2f2f2;
-      padding: 10px 15px;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .tablink:hover {
-      background-color: #ddd;
-    }
-
-    iframe {
-      display: none;
-      width: 100%;
-      height: calc(100vh - 50px); /* Adjust this value based on the hotbar height */
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <div class="tabs" id="tabContainer">
-    <!-- Tabs will be dynamically added here -->
+<div class="flex">
+  <div id="sidebar" class="fixed top-0 left-0 h-screen overflow-auto bg-blue-200 shadow-lg w-20 transition-all duration-300">
+    <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
+      <div class="flex flex-col space-y-1.5 p-6 px-4 py-2">
+        <h3 class="text-2xl font-semibold leading-none tracking-tight">Dynamic Sidebar</h3>
+        <button id="toggleButton" class="custom-button" onclick="toggleSidebar()">Toggle Sidebar</button>
+      </div>
+      <div id="buttonContainer" class="p-6 divide-y divide-gray-200">
+        <!-- Existing button -->
+        <button id="existingButton" class="custom-button" onclick="addNewButton()">Existing Button</button>
+      </div>
+    </div>
   </div>
-  <iframe id="iframeContent"></iframe>
+  <div class="flex-1 overflow-auto">
+    <!-- Content area -->
+    <div id="iframeContainer" class="iframe-container"></div>
+  </div>
+</div>
 
-  <script>
-    // Your JavaScript code here
-    const tabNames = ["Tab 1", "Tab 2", "Tab 3"];
+<style>
+  #sidebar {
+    width: 20%;
+    background-color: #f5f5f5; /* Adding a light gray background color */
+    border-right: 1px solid #ddd; /* Adding a border for separation */
+  }
 
-    function createTabs() {
-      const tabContainer = document.getElementById("tabContainer");
+  .custom-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    background-color: #f0f0f0;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
 
-      tabNames.forEach((name, index) => {
-        const tabBtn = document.createElement("button");
-        tabBtn.textContent = name;
-        tabBtn.classList.add("tablink");
-        tabBtn.addEventListener("click", () => openTab(name));
-        tabContainer.appendChild(tabBtn);
-      });
+  .custom-button:hover {
+    background-color: #ddd;
+  }
 
-      openTab(tabNames[0]);
-    }
+  .hidden {
+    display: none;
+  }
+  .iframe-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    height:100vh;
+    margin-left:20%;
+  }
 
-    function openTab(tabName) {
-      const iframe = document.getElementById("iframeContent");
-      const tabLinks = document.querySelectorAll(".tablink");
+  .iframe-content {
+    display: none;
+    border: 1px solid #ddd;
+    flex: 1;
+  }
 
-      tabLinks.forEach((link) => link.classList.remove("active"));
-      iframe.style.display = "none";
+  .show {
+    display: block;
+  }
+</style>
 
-      document.querySelector(`.tablink:contains('${tabName}')`).classList.add("active");
+<script>
+  let iframeIndex = 1;
 
-      iframe.src = "./hurr.html";
-      iframe.style.display = "block";
-    }
+function addNewButton() {
+  const buttonContainer = document.getElementById('buttonContainer');
+  const iframeContainer = document.getElementById('iframeContainer');
 
-    createTabs();
-  </script>
-</body>
-</html>
+  const newButton = document.createElement('button');
+  newButton.textContent = `Button ${iframeIndex}`;
+  newButton.classList.add('custom-button');
+
+  newButton.addEventListener('click', () => {
+    const iframes = document.querySelectorAll('.iframe-content');
+    iframes.forEach(iframe => iframe.classList.remove('show'));
+    
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.example.com/page${iframeIndex}`;
+    iframe.classList.add('iframe-content', 'show');
+    iframeContainer.appendChild(iframe);
+  });
+
+  buttonContainer.appendChild(newButton);
+  iframeIndex++;
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('hidden');
+}
+</script>

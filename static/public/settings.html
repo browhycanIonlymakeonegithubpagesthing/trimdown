@@ -58,12 +58,26 @@ select:focus {
     <option value="false">Hell no</option>
   </select>
   <br>
+  <label for="explosions">Particle Die Fast</label>
+  <select id="explosions" onchange="saveSettings()">
+    <option value="false">No</option>
+  <option value="true">Yes</option>
+</select>
+  <br>
   <label for="proxy">Proxy</label>
   <select id="proxy" onchange="saveSettings()">
     <option value="none">Clo@k3r</option>
     <option value="interstellar">Interstellar</option>
     <option value="astroid">Astroid</option>
 </select>
+<br>
+<label for="quoteType">Quotes</label>
+<select id="quoteType" onchange="saveSettings()">
+  <option value="day">Daily</option>
+  <option value="hour">Hourly</option>
+  <option value="minute">Minutely</option>
+  </select>
+  <br>
 <label for="panic">Panic Button</label>
 <select id="panic" onchange="saveSettings()">
   <option value="on">Yea</option>
@@ -80,7 +94,11 @@ select:focus {
     const proxy = document.getElementById("proxy").value
     const panic = document.getElementById("panic").value;
     const panicURL = document.getElementById("panicURL").value;
+    const explosions = document.getElementById("explosions").value;
+    const quoteType = document.getElementById("quoteType").value;
     
+    localStorage.setItem("quoteType", quoteType)
+    localStorage.setItem("explosions", explosions)
     localStorage.setItem("panicURL", panicURL);
     localStorage.setItem("panic", panic);
     localStorage.setItem("proxy", proxy);
@@ -88,6 +106,7 @@ select:focus {
   }
 
   window.onload = function() {
+    const Explosions = localStorage.getItem("explosions");
     const savedType = localStorage.getItem("userType");
     const savedBackground = localStorage.getItem("draw");
     const savedProxy = localStorage.getItem("proxy");
@@ -105,6 +124,9 @@ select:focus {
     }
     if (PanicURL) {
       document.getElementById("panicURL").value = PanicURL;
+    }
+    if (Explosions) {
+      document.getElementById("explosions").value = Explosions
     }
   };
 </script>
