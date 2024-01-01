@@ -1,22 +1,24 @@
 function HideButtons() {
-    document.getElementById('button').style.display='none';
-    document.getElementById('button2').style.display='none';
-    document.getElementById('button3').style.display='none';
-    document.getElementById('button4').style.display='none';
-    document.getElementById('button5').style.display='none';
-    document.getElementById('alarmClock').style.display='none';
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.display = 'none';
+    });
+
+    document.getElementById('alarmClock').style.display = 'none';
+    
     const panic = localStorage.getItem('panic');
     if (panic === 'on') {
-    document.getElementById('panicButton').style.display='block';
+        document.getElementById('panicButton').style.display = 'block';
     }
+    
     document.getElementById('backButton').style.display = 'block';
 }
+
 function GetButtons() {
-    document.getElementById('button').style.display='block';
-    document.getElementById('button2').style.display='block';
-    document.getElementById('button3').style.display='block';
-    document.getElementById('button4').style.display='block';
-    document.getElementById('button5').style.display='block';
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.style.display = 'block';
+    })
     document.getElementById('alarmClock').style.display='block';
     document.getElementById('backButton').style.display = 'none'; 
 }

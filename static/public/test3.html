@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tab Interface</title>
+  <style>
+    /* Your CSS styles for tabs here */
+    .tabs {
+      overflow: hidden;
+    }
+
+    .tablink {
+      background-color: #f2f2f2;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .tablink:hover {
+      background-color: #ddd;
+    }
+
+    iframe {
+      display: none;
+      width: 100%;
+      height: calc(100vh - 50px); /* Adjust this value based on the hotbar height */
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs" id="tabContainer">
+    <!-- Tabs will be dynamically added here -->
+  </div>
+  <iframe id="iframeContent"></iframe>
+
+  <script>
+    // Your JavaScript code here
+    const tabNames = ["Tab 1", "Tab 2", "Tab 3"];
+
+    function createTabs() {
+      const tabContainer = document.getElementById("tabContainer");
+
+      tabNames.forEach((name, index) => {
+        const tabBtn = document.createElement("button");
+        tabBtn.textContent = name;
+        tabBtn.classList.add("tablink");
+        tabBtn.addEventListener("click", () => openTab(name));
+        tabContainer.appendChild(tabBtn);
+      });
+
+      openTab(tabNames[0]);
+    }
+
+    function openTab(tabName) {
+      const iframe = document.getElementById("iframeContent");
+      const tabLinks = document.querySelectorAll(".tablink");
+
+      tabLinks.forEach((link) => link.classList.remove("active"));
+      iframe.style.display = "none";
+
+      document.querySelector(`.tablink:contains('${tabName}')`).classList.add("active");
+
+      iframe.src = "./hurr.html";
+      iframe.style.display = "block";
+    }
+
+    createTabs();
+  </script>
+</body>
+</html>

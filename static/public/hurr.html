@@ -1,112 +1,167 @@
 <!DOCTYPE html>
+<script src="./js/uv/uv.bundle.js"></script>
+<script src="./js/uv/uv.config.js"></script>
+<script src="./js/register-uv.js"></script>
+<script src="./js/index.js"></script>
+<link rel="manifest" href="./assets/manifest.json">
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
   <title>Cl0@k3r</title>
+  <style>
+    /* Basic Reset */
+    body, html {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-      <div id="home"></div>
-  <div id="search"></div>
-  <div id="settings"></div>
-    <div id="footer"></div>
-  <div id="password"></div>
+    /* Main content styling */
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Styling for form and button */
+    form {
+      margin-top: 20px;
+    }
+
+    button {
+      background-color:white;
+      color: #08dd12;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      animation: buttonHover 0.3s ease-in-out forwards;
+    }
+
+    h1, p {
+      text-align: center;
+      color: burlywood;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    /* Animations */
+    @keyframes buttonHover {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.1);
+      }
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      loadBookmarks();
+    };
+
+    function toggleBookmarkForm() {
+      var bookmarkForm = document.getElementById("bookmarkForm");
+      if (bookmarkForm.style.display === "none") {
+        bookmarkForm.style.display = "block";
+      } else {
+        bookmarkForm.style.display = "none";
+      }
+    }
+
+    function createBookmark() {
+      var title = document.getElementById("bookmarkTitle").value;
+      var url = document.getElementById("bookmarkURL").value;
+
+      if (title && url) {
+        var bookmark = {
+          title: title,
+          url: url
+        };
+
+        // Get existing bookmarks or initialize an empty array
+        var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+        bookmarks.push(bookmark);
+
+        // Save updated bookmarks to localStorage
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+
+        addBookmarkToUI(bookmark);
+      }
+
+      // Clear the form after creating bookmark
+      document.getElementById("bookmarkForm").reset();
+      document.getElementById("bookmarkForm").style.display = "none";
+    }
+
+    function addBookmarkToUI(bookmark) {
+      var bookmarkButton = document.createElement("button");
+      bookmarkButton.textContent = bookmark.title;
+
+      var removeButton = document.createElement("button");
+      removeButton.textContent = "Remove Bookmark";
+      removeButton.onclick = function() {
+        removeBookmark(bookmarkButton, bookmark);
+      };
+
+      bookmarkButton.onclick = function() {
+        openURL(bookmark.url);
+      };
+
+      document.getElementById("bookmarkList").appendChild(bookmarkButton);
+      document.getElementById("bookmarkList").appendChild(removeButton);
+    }
+
+    function removeBookmark(button, bookmark) {
+      var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      var index = bookmarks.findIndex(b => b.title === bookmark.title && b.url === bookmark.url);
+
+      if (index !== -1) {
+        bookmarks.splice(index, 1);
+        localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+      }
+
+      button.parentNode.removeChild(button.nextSibling); // Remove Remove Bookmark button
+      button.parentNode.removeChild(button); // Remove Bookmark button
+    }
+
+    function loadBookmarks() {
+      var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
+      bookmarks.forEach(function(bookmark) {
+        addBookmarkToUI(bookmark);
+      });
+    }
+  </script>
 </head>
-<style>
-/* Basic Reset */
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-/* Main content styling */
-main {
-  padding: 20px;
-  text-align: center;
-}
-
-/* Modal styles */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button */
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Styling for form and button */
-form {
-  margin-top: 20px;
-}
-
-button {
-  background-color:white;
-  color: black;
-  padding: 10px 15px;
-  margin: 10px 0;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-h1 {
-  text-align: center;
-  color: burlywood;
-  font-size: 2.5em;
-}
-p {
-  text-align: center;
-  color: burlywood;
-}
-</style>
 <body>
   <main>
-              <h1>Cl0@k3r</h1>
+    <h1>Cl0@k3r</h1>
     <div id="search">
       <form>
-
         <input id="searchInput" type="text" placeholder="Type here to search...">
       </form>
-      <button onclick="openURL('https://cpstest.org')" >CPStest</button>
+      <button onclick="openURL('https://cpstest.org')">CPStest</button>
       <button onclick="openURL('https://discord.com')">Discord</button>
       <button onclick="openURL('https://crazygames.com')">Crazygames</button>
+      <br>
+      <button onclick="toggleBookmarkForm()">Create Bookmark</button>
+      <div id="bookmarkForm" style="display: none;">
+        <form>
+          <input type="text" id="bookmarkTitle" placeholder="Title">
+          <input type="text" id="bookmarkURL" placeholder="URL">
+          <button type="button" onclick="createBookmark()">Create Bookmark</button>
+        </form>
+      </div>
     </div>
+    <div id="bookmarkList"></div>
   </main>
-    <script src="./js/uv/uv.bundle.js"></script>
-  <script src="./js/uv/uv.config.js"></script>
-  <script src="./js/register-uv.js"></script>
-  <script src="./js/index.js"></script>
-    <link rel="manifest" href="./assets/manifest.json">
 </body>
 </html>
