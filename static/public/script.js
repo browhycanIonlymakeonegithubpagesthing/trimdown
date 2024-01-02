@@ -160,7 +160,7 @@ function updateClock() {
         "You make a living by what you get; you make a life by what you give.",
     ];
       
-        const quoteType = localStorage.getItem('quotetype');
+        const quoteType = localStorage.getItem('quoteType');
       
         if (quoteType === 'minute') {
           const minute = new Date().getMinutes();
@@ -196,3 +196,4 @@ function updateClock() {
           console.error("Element with ID 'quoteOfTheDay' not found.");
         }
       }});
+      setInterval(displayQuote(quotes[quoteIndex]),60000)
