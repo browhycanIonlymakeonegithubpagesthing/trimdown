@@ -106,13 +106,16 @@ select:focus {
   }
 
   window.onload = function() {
+    const quoteType = localStorage.getItem("quoteType");
     const Explosions = localStorage.getItem("explosions");
     const savedType = localStorage.getItem("userType");
     const savedBackground = localStorage.getItem("draw");
     const savedProxy = localStorage.getItem("proxy");
     const Panic = localStorage.getItem("panic")
     const PanicURL = localStorage.getItem("panicURL")
-
+    if (quoteType) {
+      document.getElementById("quoteType").value = quoteType;
+    }
     if (savedBackground) {
       document.getElementById("background").value = savedBackground;
     }
