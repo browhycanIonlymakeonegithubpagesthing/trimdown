@@ -158,6 +158,13 @@ function updateClock() {
         "When I die, I want to go peacefully like my grandfather did–in his sleep. Not yelling and screaming like the passengers in his car.",
         "You miss 100% of the shots you don't take.",
         "You make a living by what you get; you make a life by what you give.",
+        "My therapist told me the way to achieve true inner peace is to finish what I start. So far I've finished two bags of M&Ms and a chocolate cake. I feel better already.",
+        "The future cannot be predicted, but futures can be invented.",
+        "Why do people say 'no offense' right before they're about to offend you?",
+        "Either you run the day, or the day runs you.",
+        "A mind is like a parachute. It doesn’t work if it isn’t open.",
+        "The man who has confidence in himself gains the confidence of others.",
+        "Management is doing things right; leadership is doing the right things.",
     ];
       
         const quoteType = localStorage.getItem('quoteType');
