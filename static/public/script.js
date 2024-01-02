@@ -105,7 +105,7 @@ function updateClock() {
   document.addEventListener("DOMContentLoaded", function() {
     const quotes = [
         "People say nothing is impossible, but I do nothing every day.",
-        "You aren't doing it wrong is nobody knows what you are doing.",
+        "You aren't doing it wrong if nobody knows what you are doing.",
         "War does not determine who is right - only who is left.",
         "Perfection is not attainable, but if we chase perfection we can catch excellence.",
         "A successful man is one who makes more money than his wife can spend. A successful woman is one who can find such a man.",
@@ -193,6 +193,7 @@ function updateClock() {
             if (quoteIndex >= 0 && quoteIndex < quotes.length) {
               displayQuote(quotes[quoteIndex]);  
         }
+        setInterval(displayQuote(quotes[quoteIndex]),60000)
       };
       
       function displayQuote(quote) {
@@ -203,4 +204,3 @@ function updateClock() {
           console.error("Element with ID 'quoteOfTheDay' not found.");
         }
       }});
-      setInterval(displayQuote(quotes[quoteIndex]),60000)
