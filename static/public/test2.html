@@ -41,7 +41,7 @@
 <button id="button" onclick="GameLoader()" style="position:fixed;top:100px;left:10px;">Games(Fullscreen)</button>
 <button id="button" onclick="ProxyFullscreen()" style="position:fixed;top:145px;left:10px">Proxy (Fullscreen)</button>
 <button id="button" onclick="Settings()" style="position:fixed;top:190px;left:10px">Settings</button>
-<button id="panicButton" style="display: none;" onclick="window.open(panicURL)">PANIC</button>
+<button id="panicButton" style="display: none;" onclick="panicButton()">PANIC</button>
 <div id="alarmClock">
   <div id="clockFace">
     <p id="clockTime"></p>
@@ -52,14 +52,9 @@
 <button id="backButton" onclick="hideIframeContent()" style="display: none; position: fixed; bottom: 10px; left: 10px;">《</button>
 <script>
   setInterval(Constant(), 1000)
+  let panicURL;
   function Constant() {
-  const panic = localStorage.getItem("panicURL")
-  if (panic) {
-    var panicURL = panic
-  }
-  else {
-    var panicURL="https://drive.google.com/drive/u/0/home"
-  }
+
   let zIndex = 1000;
     const canvas = document.createElement('canvas');
 const ctx = canvas.getContext('2d');
@@ -153,7 +148,10 @@ window.onload = function() {
         document.getElementById("infoModal").style.display = "none";
     }
 }
-
+function panicButton() {
+  window.open(panicURL || "https://drive.google.com/drive/u/0/home");
+  }
+  
 </script>
 </body>
 </html>
