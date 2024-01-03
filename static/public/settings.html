@@ -63,6 +63,12 @@ select:focus {
     <option value="false">No</option>
   <option value="true">Yes</option>
 </select>
+<br>
+<label for="style">Proxy Styles</label>
+<select id="style" onchange="saveSettings()">
+<option value="mainStyle">Default</option>
+<option value="darkStyle">Darkmode</option>
+</select>
   <br>
   <label for="proxy">Proxy</label>
   <select id="proxy" onchange="saveSettings()">
@@ -96,7 +102,9 @@ select:focus {
     const panicURL = document.getElementById("panicURL").value;
     const explosions = document.getElementById("explosions").value;
     const quoteType = document.getElementById("quoteType").value;
-    
+    const style = document.getElementById("style").value;
+
+    localStorage.setItem("style", style)
     localStorage.setItem("quoteType", quoteType)
     localStorage.setItem("explosions", explosions)
     localStorage.setItem("panicURL", panicURL);
@@ -113,6 +121,11 @@ select:focus {
     const savedProxy = localStorage.getItem("proxy");
     const Panic = localStorage.getItem("panic")
     const PanicURL = localStorage.getItem("panicURL")
+    const style = localStorage.getItem("style")
+
+    if (style) {
+      document.getElementById("style").value = style;
+    }
     if (quoteType) {
       document.getElementById("quoteType").value = quoteType;
     }
@@ -129,7 +142,7 @@ select:focus {
       document.getElementById("panicURL").value = PanicURL;
     }
     if (Explosions) {
-      document.getElementById("explosions").value = Explosions
+      document.getElementById("explosions").value = Explosions;
     }
   };
 </script>

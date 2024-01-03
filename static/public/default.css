@@ -1,0 +1,57 @@
+/* Basic Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  /* Main content styling */
+  main {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Styling for form and button */
+  form {
+    margin-top: 20px;
+  }
+  
+  button {
+    background-color: white;
+    color: #08dd12;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border: 1px solid #08dd12;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    border-radius: 5px;
+    outline: none;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+    color: white;
+    transform: scale(1.05);
+  }
+  
+  h1, p {
+    text-align: center;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 2.5em;
+  }
+  
+  /* Animations */
+  @keyframes buttonHover {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.1);
+    }
+  }
+  

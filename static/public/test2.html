@@ -149,6 +149,7 @@ window.onload = function() {
     }
 }
 function panicButton() {
+  panicURL = localStorage.getItem("panicURL")
   window.open(panicURL || "https://drive.google.com/drive/u/0/home");
   }
   

@@ -5,64 +5,106 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
   <title>Cl0@k3r</title>
-  <style>
-    /* Basic Reset */
-    body, html {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+  <!--
+  <style id="mainStyle">
+/* Basic Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
 
-    /* Main content styling */
-    main {
-      padding: 20px;
-      text-align: center;
-    }
+/* Main content styling */
+main {
+  padding: 20px;
+  text-align: center;
+}
 
-    /* Styling for form and button */
-    form {
-      margin-top: 20px;
-    }
+/* Styling for form and button */
+form {
+  margin-top: 20px;
+}
 
-    button {
-      background-color:white;
-      color: #08dd12;
-      padding: 10px 15px;
-      margin: 10px 0;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.3s ease-in-out;
-    }
+button {
+  background-color: white;
+  color: #08dd12;
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border: 1px solid #08dd12;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  border-radius: 5px;
+  outline: none;
+}
 
-    button:hover {
-      background-color: #45a049;
-      animation: buttonHover 0.3s ease-in-out forwards;
-    }
+button:hover {
+  background-color: #45a049;
+  color: white;
+  transform: scale(1.05);
+}
 
-    h1, p {
-      text-align: center;
-      color: burlywood;
-    }
+h1, p {
+  text-align: center;
+  color: #333;
+}
 
-    h1 {
-      font-size: 2.5em;
-    }
+h1 {
+  font-size: 2.5em;
+}
 
-    /* Animations */
-    @keyframes buttonHover {
-      from {
-        transform: scale(1);
-      }
-      to {
-        transform: scale(1.1);
-      }
-    }
+/* Animations */
+@keyframes buttonHover {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
   </style>
+<style id="darkStyle">
+  body, html {
+    background-color: #111;
+    color: #ddd;
+  }
+
+  button {
+    background-color: #ac2121;
+    color: #ddd;
+    border: 1px solid #ddd;
+  }
+
+  button:hover {
+    background-color: #555;
+    border-color: #ddd;
+  }
+</style>
+
+<style id="lightStyle">
+  body, html {
+    background-color: #fff;
+    color: #333;
+  }
+
+  button {
+    background-color: #eee;
+    color: #333;
+    border: 1px solid #333;
+  }
+
+  button:hover {
+    background-color: #ddd;
+    border-color: #333;
+  }
+</style>
+!-->
   <script>
-    window.onload = function() {
-      loadBookmarks();
-    };
+  window.onload = function() {
+    loadBookmarks();
+  };
 
     function toggleBookmarkForm() {
       var bookmarkForm = document.getElementById("bookmarkForm");
@@ -103,7 +145,7 @@
       bookmarkButton.textContent = bookmark.title;
 
       var removeButton = document.createElement("button");
-      removeButton.textContent = "Remove Bookmark";
+      removeButton.textContent = "X";
       removeButton.onclick = function() {
         removeBookmark(bookmarkButton, bookmark);
       };
@@ -166,6 +208,7 @@
 <div id="home"></div>
 <div id="footer"></div>
 <div id="password"></div>
+<script src="./test.js"></script>
 <script src="./js/uv/uv.bundle.js"></script>
 <script src="./js/uv/uv.config.js"></script>
 <script src="./js/register-uv.js"></script>
