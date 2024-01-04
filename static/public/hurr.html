@@ -5,107 +5,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1, minimum-scale=1, width=device-width">
   <title>Cl0@k3r</title>
-  <!--
-  <style id="mainStyle">
-/* Basic Reset */
-body, html {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-}
-
-/* Main content styling */
-main {
-  padding: 20px;
-  text-align: center;
-}
-
-/* Styling for form and button */
-form {
-  margin-top: 20px;
-}
-
-button {
-  background-color: white;
-  color: #08dd12;
-  padding: 10px 15px;
-  margin: 10px 5px;
-  border: 1px solid #08dd12;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-  border-radius: 5px;
-  outline: none;
-}
-
-button:hover {
-  background-color: #45a049;
-  color: white;
-  transform: scale(1.05);
-}
-
-h1, p {
-  text-align: center;
-  color: #333;
-}
-
-h1 {
-  font-size: 2.5em;
-}
-
-/* Animations */
-@keyframes buttonHover {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
-}
-
-  </style>
-<style id="darkStyle">
-  body, html {
-    background-color: #111;
-    color: #ddd;
-  }
-
-  button {
-    background-color: #ac2121;
-    color: #ddd;
-    border: 1px solid #ddd;
-  }
-
-  button:hover {
-    background-color: #555;
-    border-color: #ddd;
-  }
-</style>
-
-<style id="lightStyle">
-  body, html {
-    background-color: #fff;
-    color: #333;
-  }
-
-  button {
-    background-color: #eee;
-    color: #333;
-    border: 1px solid #333;
-  }
-
-  button:hover {
-    background-color: #ddd;
-    border-color: #333;
-  }
-</style>
-!-->
   <script>
   window.onload = function() {
     loadBookmarks();
   };
-
     function toggleBookmarkForm() {
       var bookmarkForm = document.getElementById("bookmarkForm");
       if (bookmarkForm.style.display === "none") {
@@ -114,28 +17,19 @@ h1 {
         bookmarkForm.style.display = "none";
       }
     }
-
     function createBookmark() {
       var title = document.getElementById("bookmarkTitle").value;
       var url = document.getElementById("bookmarkURL").value;
-
       if (title && url) {
         var bookmark = {
           title: title,
           url: url
         };
-
-        // Get existing bookmarks or initialize an empty array
         var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
         bookmarks.push(bookmark);
-
-        // Save updated bookmarks to localStorage
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
-
         addBookmarkToUI(bookmark);
       }
-
-      // Clear the form after creating bookmark
       document.getElementById("bookmarkForm").reset();
       document.getElementById("bookmarkForm").style.display = "none";
     }
@@ -143,34 +37,27 @@ h1 {
     function addBookmarkToUI(bookmark) {
       var bookmarkButton = document.createElement("button");
       bookmarkButton.textContent = bookmark.title;
-
       var removeButton = document.createElement("button");
       removeButton.textContent = "X";
       removeButton.onclick = function() {
         removeBookmark(bookmarkButton, bookmark);
       };
-
       bookmarkButton.onclick = function() {
         openURL(bookmark.url);
       };
-
       document.getElementById("bookmarkList").appendChild(bookmarkButton);
       document.getElementById("bookmarkList").appendChild(removeButton);
     }
-
     function removeBookmark(button, bookmark) {
       var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
       var index = bookmarks.findIndex(b => b.title === bookmark.title && b.url === bookmark.url);
-
       if (index !== -1) {
         bookmarks.splice(index, 1);
         localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
       }
-
       button.parentNode.removeChild(button.nextSibling); // Remove Remove Bookmark button
       button.parentNode.removeChild(button); // Remove Bookmark button
     }
-
     function loadBookmarks() {
       var bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
       bookmarks.forEach(function(bookmark) {
@@ -186,10 +73,7 @@ h1 {
       <form>
         <input id="searchInput" type="text" placeholder="Type here to search...">
       </form>
-      <button onclick="openURL('https://cpstest.org')">CPStest</button>
-      <button onclick="openURL('https://discord.com')">Discord</button>
-      <button onclick="openURL('https://crazygames.com')">Crazygames</button>
-      <br>
+      <div id="bookmarkList"></div>
       <button onclick="toggleBookmarkForm()">Create Bookmark</button>
       <div id="bookmarkForm" style="display: none;">
         <form>
@@ -199,7 +83,6 @@ h1 {
         </form>
       </div>
     </div>
-    <div id="bookmarkList"></div>
   </main>
 </body>
 </html>
